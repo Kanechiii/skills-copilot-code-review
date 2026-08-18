@@ -23,11 +23,18 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="manage-announcements-button" class="icon-button" title="Manage Announcements">
+              <span class="announcement-icon">📢</span>
+              <span>Manage</span>
+            </button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- Announcements Display Section -->
+    <div id="announcements-display" class="announcements-display"></div>
 
     <main>
       <section id="activities-container">
@@ -131,6 +138,59 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcement Manager Modal -->
+    <div id="announcement-manager-modal" class="modal hidden">
+      <div class="modal-content announcement-manager-modal">
+        <span class="close-modal" id="close-announcement-manager">&times;</span>
+        <h3>📢 Manage Announcements</h3>
+        
+        <div class="announcement-manager-container">
+          <!-- Announcements List -->
+          <div class="announcements-list-section">
+            <h4>Current Announcements</h4>
+            <div id="announcements-list" class="announcements-list">
+              <p class="loading-message">Loading announcements...</p>
+            </div>
+          </div>
+
+          <!-- Add/Edit Form -->
+          <div class="announcement-form-section">
+            <h4 id="form-title">Add New Announcement</h4>
+            <form id="announcement-form" class="announcement-form">
+              <input type="hidden" id="announcement-id" />
+              
+              <div class="form-group">
+                <label for="announcement-title">Title:</label>
+                <input type="text" id="announcement-title" required placeholder="e.g., Activity Registration Open" />
+              </div>
+
+              <div class="form-group">
+                <label for="announcement-message">Message:</label>
+                <textarea id="announcement-message" required rows="4" placeholder="Enter announcement message..."></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="announcement-start-date">Start Date (Optional):</label>
+                  <input type="date" id="announcement-start-date" />
+                </div>
+
+                <div class="form-group">
+                  <label for="announcement-expiration-date">Expiration Date (Required):</label>
+                  <input type="date" id="announcement-expiration-date" required />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="announcement-submit-btn" class="btn-primary">Add Announcement</button>
+                <button type="button" id="announcement-cancel-btn" class="btn-secondary">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 
